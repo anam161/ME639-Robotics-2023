@@ -1,0 +1,21 @@
+
+How to clone the GitHub repository in Linux?
+1. open terminal.
+2. run the following command.
+   sudo apt-get update
+   sudo apt-get install git
+if you have installed GitHub then verify that through following command.
+   git --version
+3. colne the repository through the following command.
+   git clone "paste the link of GitHub"
+   for example: git clone https://github.com/anam161/ME639-Robotics-2023.git
+
+
+Run the python file in terminal.
+
+1. cd repository name
+2. python x.py
+  or python3 x.py
+
+  
+
