@@ -1,0 +1,46 @@
+<mujoco>
+  <option gravity="0 0 -9.8" />
+  <worldbody>
+    <light diffuse=".5 .5 .5" pos="0 0 10" dir="0 0 -1"/>
+    <geom type="plane" size="4 4 0.1" rgba="1 1 1 1"/>
+    
+    <body name="object" pos="0 0 0.2">
+      <joint name="obj_joint" type="free"/>
+      <geom name="obj_geom" type="box" size="0.2 0.2 0.2" rgba="0 0 0 4" mass="1"/>
+      <site name="obj_pos" size="0.08" pos="0 0 0.2"/>
+    </body>
+      
+    <body pos="-1.066 -2 0.2" euler="90 -90 90">
+      <joint name="1" type="hinge" axis="1 0 0" pos="0 0 -0.866" damping="25" stiffness="0.1"/>
+      <geom type="cylinder" size="0.06 0.866" rgba="1 0 0 1" mass="0.1"/>
+      <body pos="0 0 1.366" euler="0 0 0">
+        <joint name="2" type="hinge" axis="1 0 0" pos="0 0 -0.5" damping="20" stiffness="1"/>
+        <geom type="cylinder" size="0.06 0.5" rgba="0 1 0 1" mass="0.03"/>
+        <site name="tip1" size="0.08" pos="0 0 0.5"/>
+      </body>
+    </body>
+    
+    <body pos="1.066 -2 0.2" euler="90 90 90">
+      <joint name="3" type="hinge" axis="1 0 0" pos="0 0 -0.866" damping="25" stiffness="1"/>
+      <geom type="cylinder" size="0.06 0.866" rgba="1 0 0 1" mass="0.1"/>
+      <body pos="0 0 1.366" euler="0 0 0">
+        <joint name="4" type="hinge" axis="1 0 0" pos="0 0 -0.5" damping="20" stiffness="1"/>
+        <geom type="cylinder" size="0.06 0.5" rgba="0 1 0 1" mass="0.03"/>
+        <site name="tip2" size="0.08" pos="0 0 0.5"/>
+      </body>
+    </body>
+  </worldbody>
+  
+  <sensor>
+    <framepos objtype="site" objname="tip1"/>
+    <framepos objtype="site" objname="tip2"/>
+  </sensor>
+  
+  <actuator>
+    <position name="link1" joint="1" ctrllimited="true" ctrlrange="-3.14 3.14" kp="30"/>
+    <position name="link2" joint="2" ctrllimited="true" ctrlrange="-3.14 3.14" kp="100"/>
+    <position name="link3" joint="3" ctrllimited="true" ctrlrange="-3.14 3.14" kp="30"/>
+    <position name="link4" joint="4" ctrllimited="true" ctrlrange="-3.14 3.14" kp="100"/>
+  </actuator>
+</mujoco>
+
